@@ -18,7 +18,8 @@ COPY build.sh /root/build.sh
 # Note: git config required for swiftpm/Tests/dep/FunctionalBuildTests.swift
 RUN buildDeps='git cmake ninja-build uuid-dev icu-devtools libbsd-dev \
       libedit-dev libxml2-dev libsqlite3-dev swig python libpython-dev \
-      libblocksruntime-dev libcurl4-openssl-dev autoconf libtool systemtap-sdt-dev \
+      libblocksruntime-dev libcurl4-openssl-dev autoconf automake \
+      libtool systemtap-sdt-dev \
       libncurses5-dev pkg-config ca-certificates python rsync file'; \
       runDeps='libicu-dev clang'; \
     apt-get update \
