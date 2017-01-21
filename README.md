@@ -38,6 +38,7 @@ cd /path/to/swift
 docker run --name swift-14 -v $PWD:/src -v $PWD:/output eosrei/swift-dev-buildbot:14.04
 docker run --name swift-15 -v $PWD:/src -v $PWD:/output eosrei/swift-dev-buildbot:15.10
 docker run --name swift-f23 -v $PWD:/src -v $PWD:/output eosrei/swift-dev-buildbot:fedora23
+docker run --name swift-16 -v $PWD:/src -v $PWD:/output eosrei/swift-dev-buildbot:16.10
 ```
 
 **Note:** OS X and Windows with [Docker Machine](https://docs.docker.com/machine/) must use volume locations within `/Users` (OS X) or `C:\Users` (Windows). Details:
@@ -57,6 +58,12 @@ docker start -i -a swift-14
 Run the Ubuntu 15.10 build:
 ```
 docker start -i -a swift-15
+```
+
+Run the Ubuntu 16.04 build:
+```
+docker build -t swift-16 .
+docker start -i -a swift-16
 ```
 
 Run the Fedora 23 build:
