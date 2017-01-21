@@ -29,6 +29,7 @@ git clone https://github.com/apple/swift-llbuild.git llbuild
 git clone https://github.com/apple/swift-package-manager.git swiftpm
 git clone https://github.com/apple/swift-corelibs-xctest.git
 git clone https://github.com/apple/swift-corelibs-foundation.git
+git clone https://github.com/apple/swift-corelibs-libdispatch.git
 ```
 
 Get the container images and the builds:
