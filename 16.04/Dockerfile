@@ -3,7 +3,7 @@
 
 FROM ubuntu:16.04
 
-MAINTAINER https://github.com/eosrei/docker-swift-dev-buildbot
+MAINTAINER https://github.com/snoe925/docker-swift-dev-buildbot
 
 # Volume mounted from host to access source code. [Required]
 VOLUME ["/src"]
