@@ -15,8 +15,12 @@ if [ ! -r /src/swift/utils/update-checkout ]; then
     ./swift/utils/update-checkout --clone
 fi
 
-exec /src/swift/utils/build-script \
-  --preset=buildbot_linux_1604 \
-  install_destdir=/install \
-  installable_package=/output/swift-${TIMESTAMP}-ubuntu16.04.tar.gz \
-  2>&1 | tee /output/build-${TIMESTAMP}.log
+/src/swift/utils/build-script --assertions --no-swift-stdlib-assertions --llbuild --swiftpm --xctest \
+    --build-subdir=buildbot_linux --lldb --release --foundation --libdispatch --lit-args=-v -- \
+    --swift-enable-ast-verifier=0 --build-ninja --install-swift --install-lldb --install-llbuild --install-swiftpm --install-xctest \
+    --install-prefix=/usr \
+    '--swift-install-components=autolink-driver;compiler;clang-builtin-headers;stdlib;swift-remote-mirror;sdk-overlay;license' \
+    --build-swift-static-stdlib --build-swift-static-sdk-overlay --build-swift-stdlib-unittest-extra \
+    --install-destdir=/install --installable-package=/output/swift-20170125-192513-ubuntu16.04.tar.gz \
+    --install-foundation --install-libdispatch --reconfigure \
+    2>&1 | tee /output/build-${TIMESTAMP}.log
