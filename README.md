@@ -26,11 +26,18 @@ git clone https://github.com/apple/swift.git swift
 
 Get the container images and the builds:
 ```
-cd /path/to/swift
-docker run --name swift-14 -v $PWD:/src -v $PWD:/output eosrei/swift-dev-buildbot:14.04
-docker run --name swift-15 -v $PWD:/src -v $PWD:/output eosrei/swift-dev-buildbot:15.10
-docker run --name swift-f23 -v $PWD:/src -v $PWD:/output eosrei/swift-dev-buildbot:fedora23
-docker run --name swift-16 -v $PWD:/src -v $PWD:/output eosrei/swift-dev-buildbot:16.10
+cd /path/to/swift && mkdir -pv src && mkdir -pv output
+docker run --name swift-14 -v "$(pwd)/src:/src" -v "$(pwd)/output:/output" eosrei/swift-dev-buildbot:14.04
+docker run --name swift-15 -v "$(pwd)/src:/src" -v "$(pwd)/output:/output" eosrei/swift-dev-buildbot:15.10
+docker run --name swift-f23 -v "$(pwd)/src:/src" -v "$(pwd)/output:/output" eosrei/swift-dev-buildbot:fedora23
+docker run --name swift-16 -v "$(pwd)/src:/src" -v "$(pwd)/output:/output" eosrei/swift-dev-buildbot:16.10
+```
+
+For the most recent build:
+```
+cd "${repo}/18.04"
+docker build --pull --tag ubuntu1804/swift413:latest .
+docker run --name ubuntu1804_swift413 -v "$(pwd)/src:/src" -v "$(pwd)/output:/output" ubuntu1804/swift413:latest
 ```
 
 **Note:** OS X and Windows with [Docker Machine](https://docs.docker.com/machine/) must use volume locations within `/Users` (OS X) or `C:\Users` (Windows). Details:
